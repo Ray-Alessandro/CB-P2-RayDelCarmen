@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="api" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#115e59"/>
+      <stop offset="1" stop-color="#0f3d3e"/>
+    </linearGradient>
+    <linearGradient id="fe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#4f46e5"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .title { font-size: 26px; font-weight: 700; fill: #0f172a; }
+      .subtitle { font-size: 14px; fill: #64748b; }
+      .box-title { font-size: 17px; font-weight: 700; }
+      .box-sub { font-size: 12px; }
+      .layer { font-size: 13px; font-weight: 600; fill: #e2e8f0; }
+      .badge { font-size: 11px; font-weight: 600; }
+      .edge-label { font-size: 12px; font-weight: 600; fill: #334155; }
+      .edge-sub { font-size: 11px; fill: #64748b; }
+      .note { font-size: 11px; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="980" height="540" fill="#f8fafc"/>
+
+  <text x="40" y="48" class="title">RayBank - Physical Architecture</text>
+  <text x="40" y="72" class="subtitle">Layered full-stack app | Angular SPA | Spring Boot REST API | H2 in-memory database</text>
+
+  <!-- USER -->
+  <g>
+    <rect x="40" y="200" width="150" height="120" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="115" cy="246" r="18" fill="#cbd5e1"/>
+    <rect x="93" y="270" width="44" height="22" rx="11" fill="#cbd5e1"/>
+    <text x="115" y="312" text-anchor="middle" class="box-title" fill="#0f172a">User</text>
+  </g>
+
+  <!-- FRONTEND -->
+  <g>
+    <rect x="260" y="170" width="190" height="180" rx="18" fill="url(#fe)"/>
+    <text x="355" y="208" text-anchor="middle" class="box-title" fill="#ffffff">Application</text>
+    <text x="355" y="228" text-anchor="middle" class="box-sub" fill="#e0e7ff">Angular 19 (SPA)</text>
+    <rect x="288" y="248" width="134" height="34" rx="9" fill="rgba(255,255,255,0.16)"/>
+    <text x="355" y="270" text-anchor="middle" class="badge" fill="#ffffff">Components / Views</text>
+    <rect x="288" y="290" width="134" height="34" rx="9" fill="rgba(255,255,255,0.16)"/>
+    <text x="355" y="312" text-anchor="middle" class="badge" fill="#ffffff">HTTP Services</text>
+    <rect x="288" y="146" width="92" height="22" rx="11" fill="#312e81"/>
+    <text x="334" y="161" text-anchor="middle" class="badge" fill="#c7d2fe">localhost:4200</text>
+  </g>
+
+  <!-- API -->
+  <g>
+    <rect x="520" y="150" width="230" height="240" rx="18" fill="url(#api)"/>
+    <text x="635" y="186" text-anchor="middle" class="box-title" fill="#ffffff">API REST</text>
+    <text x="635" y="206" text-anchor="middle" class="box-sub" fill="#a7f3d0">Spring Boot - Java 17</text>
+
+    <rect x="548" y="226" width="174" height="40" rx="10" fill="rgba(255,255,255,0.12)"/>
+    <text x="635" y="251" text-anchor="middle" class="layer">Controller</text>
+
+    <rect x="548" y="274" width="174" height="40" rx="10" fill="rgba(255,255,255,0.12)"/>
+    <text x="635" y="299" text-anchor="middle" class="layer">Service (business rules)</text>
+
+    <rect x="548" y="322" width="174" height="40" rx="10" fill="rgba(255,255,255,0.12)"/>
+    <text x="635" y="347" text-anchor="middle" class="layer">Repository</text>
+
+    <rect x="548" y="126" width="84" height="22" rx="11" fill="#064e3b"/>
+    <text x="590" y="141" text-anchor="middle" class="badge" fill="#6ee7b7">localhost:8080</text>
+  </g>
+
+  <!-- DATABASE -->
+  <g>
+    <rect x="820" y="200" width="130" height="140" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <ellipse cx="885" cy="244" rx="36" ry="13" fill="#0d9488"/>
+    <path d="M849,244 v40 a36,13 0 0 0 72,0 v-40" fill="none" stroke="#0d9488" stroke-width="3"/>
+    <path d="M849,264 a36,13 0 0 0 72,0" fill="none" stroke="#0d9488" stroke-width="3"/>
+    <text x="885" y="312" text-anchor="middle" class="box-title" fill="#0f172a">Database</text>
+    <text x="885" y="330" text-anchor="middle" class="box-sub" fill="#64748b">H2 (in-memory)</text>
+  </g>
+
+  <!-- EDGES -->
+  <!-- User to Frontend -->
+  <line x1="190" y1="260" x2="256" y2="260" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="223" y="248" text-anchor="middle" class="edge-label">Uses</text>
+
+  <!-- Frontend to API -->
+  <line x1="450" y1="250" x2="516" y2="250" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="483" y="234" text-anchor="middle" class="edge-label">REST / JSON</text>
+  <text x="483" y="276" text-anchor="middle" class="edge-sub">HTTP (CORS)</text>
+
+  <!-- API to DB -->
+  <line x1="750" y1="270" x2="816" y2="270" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="783" y="254" text-anchor="middle" class="edge-label">JPA</text>
+  <text x="783" y="296" text-anchor="middle" class="edge-sub">Hibernate/JDBC</text>
+
+  <!-- Endpoints note -->
+  <g>
+    <rect x="260" y="420" width="490" height="86" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="280" y="446" class="edge-label" fill="#0f172a">Endpoints</text>
+    <text x="280" y="470" class="box-sub" fill="#334155" font-family="Consolas, monospace">GET  /api/accounts/{id}     -&gt; consult account</text>
+    <text x="280" y="492" class="box-sub" fill="#334155" font-family="Consolas, monospace">POST /api/transactions      -&gt; register movement</text>
+  </g>
+
+  <text x="40" y="520" class="note">Communication: the Angular app calls the REST API over HTTP/JSON; the API persists data through JPA into the H2 database.</text>
+</svg>
