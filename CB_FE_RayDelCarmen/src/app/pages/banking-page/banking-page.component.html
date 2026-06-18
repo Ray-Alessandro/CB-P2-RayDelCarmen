@@ -1,0 +1,50 @@
+<div class="page">
+  <section class="intro">
+    <p class="intro__eyebrow">Account management</p>
+    <h1 class="intro__title">Consult your account and register movements</h1>
+    <p class="intro__subtitle">
+      Search an account by its ID, review the current balance and register deposits or withdrawals in soles.
+    </p>
+  </section>
+
+  <section class="search" aria-label="Search account">
+    <form class="search__form" [formGroup]="searchForm" (ngSubmit)="searchAccount()">
+      <div class="field">
+        <label for="accountId">Account ID</label>
+        <input
+          id="accountId"
+          type="number"
+          inputmode="numeric"
+          min="1"
+          step="1"
+          formControlName="accountId"
+          placeholder="e.g. 1"
+        />
+      </div>
+      <button class="btn btn--primary" type="submit" [disabled]="accountLoading">
+        @if (accountLoading) {
+          <span class="spinner" aria-hidden="true"></span> Searching
+        } @else {
+          Search account
+        }
+      </button>
+    </form>
+  </section>
+
+  <div class="grid">
+    <app-account-view
+      [account]="account"
+      [loading]="accountLoading"
+      [errorMessage]="accountErrorMessage"
+    />
+
+    <app-transaction-form
+      [accountId]="account?.id ?? null"
+      [submitting]="transactionSubmitting"
+      [errorMessage]="transactionErrorMessage"
+      [successMessage]="transactionSuccessMessage"
+      (transactionSubmitted)="onTransactionSubmitted($event)"
+      (messagesReset)="clearTransactionMessages()"
+    />
+  </div>
+</div>

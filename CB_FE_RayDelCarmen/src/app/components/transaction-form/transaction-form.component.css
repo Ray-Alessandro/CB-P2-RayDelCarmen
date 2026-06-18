@@ -1,0 +1,189 @@
+:host {
+  display: block;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.card__head {
+  margin-bottom: 1.25rem;
+}
+
+.card__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.15rem;
+  color: var(--ink-900);
+}
+
+.card__subtitle {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-500);
+}
+
+.hint {
+  margin: 0;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  color: var(--ink-500);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.segmented__btn {
+  padding: 0.65rem 0.5rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-500);
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.segmented__btn.is-active {
+  color: var(--ink-900);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.segmented__btn.is-deposit {
+  color: var(--success-600);
+}
+
+.segmented__btn.is-withdrawal {
+  color: var(--danger-600);
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-700);
+}
+
+.amount-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.amount-input:focus-within {
+  background: var(--surface);
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.18);
+}
+
+.amount-input.is-invalid {
+  border-color: #fca5a5;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.18);
+}
+
+.amount-input__prefix {
+  padding: 0 0.75rem;
+  color: var(--ink-500);
+  font-weight: 600;
+}
+
+.amount-input input {
+  flex: 1;
+  width: 100%;
+  padding: 0.75rem 0.9rem 0.75rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink-900);
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.amount-input input:focus {
+  outline: none;
+}
+
+.msg {
+  margin: 0;
+  padding: 0.65rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.msg--error {
+  background: var(--danger-bg);
+  color: var(--danger-600);
+}
+
+.msg--success {
+  background: var(--success-bg);
+  color: var(--success-600);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: transform 0.12s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.btn--submit {
+  background: linear-gradient(135deg, var(--brand-600), var(--accent-600));
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.btn--submit:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

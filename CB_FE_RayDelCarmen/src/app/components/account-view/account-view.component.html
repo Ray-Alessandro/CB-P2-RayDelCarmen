@@ -1,0 +1,48 @@
+@if (loading) {
+  <section class="balance-card balance-card--skeleton" aria-busy="true">
+    <span class="sr-only">Loading account...</span>
+    <div class="sk sk--line"></div>
+    <div class="sk sk--amount"></div>
+    <div class="sk sk--line sk--short"></div>
+  </section>
+} @else if (errorMessage) {
+  <section class="state state--error" role="alert">
+    <span class="state__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <line x1="12" y1="8" x2="12" y2="13" />
+        <line x1="12" y1="16.5" x2="12" y2="16.5" />
+      </svg>
+    </span>
+    <h2 class="state__title">Account not available</h2>
+    <p class="state__text">{{ errorMessage }}</p>
+  </section>
+} @else if (account) {
+  <section class="balance-card">
+    <header class="balance-card__head">
+      <span class="balance-card__chip">Active account</span>
+      <span class="balance-card__id">ID #{{ account.id }}</span>
+    </header>
+
+    <div class="balance-card__body">
+      <p class="balance-card__label">Available balance</p>
+      <p class="balance-card__amount">{{ account.balance | currency:'PEN':'symbol':'1.2-2' }}</p>
+    </div>
+
+    <footer class="balance-card__foot">
+      <span class="balance-card__foot-label">Account number</span>
+      <span class="balance-card__number">{{ account.accountNumber }}</span>
+    </footer>
+  </section>
+} @else {
+  <section class="state">
+    <span class="state__icon state__icon--muted" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7" />
+        <line x1="16" y1="16" x2="21" y2="21" />
+      </svg>
+    </span>
+    <h2 class="state__title">No account selected</h2>
+    <p class="state__text">Search for an account by its ID to view the current balance.</p>
+  </section>
+}

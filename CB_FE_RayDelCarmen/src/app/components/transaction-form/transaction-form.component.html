@@ -1,0 +1,62 @@
+<section class="card">
+  <header class="card__head">
+    <h2 class="card__title">Register movement</h2>
+    <p class="card__subtitle">Add a deposit or a withdrawal to the selected account.</p>
+  </header>
+
+  @if (accountId === null) {
+    <p class="hint">Load an account first to register a movement.</p>
+  } @else {
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="segmented" role="group" aria-label="Transaction type">
+        @for (option of transactionOptions; track option.value) {
+          <button
+            type="button"
+            class="segmented__btn"
+            [class.is-active]="isSelected(option.value)"
+            [class.is-deposit]="isSelected(option.value) && option.value === transactionTypes.DEPOSIT"
+            [class.is-withdrawal]="isSelected(option.value) && option.value === transactionTypes.WITHDRAWAL"
+            (click)="selectType(option.value)"
+          >
+            {{ option.label }}
+          </button>
+        }
+      </div>
+
+      <div class="field">
+        <label for="amount">Amount</label>
+        <div class="amount-input" [class.is-invalid]="form.controls.amount.touched && form.controls.amount.invalid">
+          <span class="amount-input__prefix">S/</span>
+          <input
+            id="amount"
+            type="number"
+            inputmode="decimal"
+            min="0.01"
+            step="0.01"
+            formControlName="amount"
+            placeholder="0.00"
+            (keydown)="blockInvalidKeys($event)"
+          />
+        </div>
+        @if (form.controls.amount.touched && form.controls.amount.invalid) {
+          <p class="msg msg--error">Enter an amount greater than zero.</p>
+        }
+      </div>
+
+      @if (errorMessage) {
+        <p class="msg msg--error" role="alert">{{ errorMessage }}</p>
+      }
+      @if (successMessage) {
+        <p class="msg msg--success" role="status">{{ successMessage }}</p>
+      }
+
+      <button class="btn btn--submit" type="submit" [disabled]="submitting || form.invalid">
+        @if (submitting) {
+          <span class="spinner" aria-hidden="true"></span> Processing
+        } @else {
+          Submit movement
+        }
+      </button>
+    </form>
+  }
+</section>
